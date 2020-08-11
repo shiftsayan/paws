@@ -20,7 +20,19 @@
 \usepackage{fontawesome5}
 
 \setmainfont{Lato}
-\newcommand{\titlefont}{
+\newcommand{\headfont}{
     \fontspec[Path=fonts/]{ProductSans-Bold.ttf}
 }
 
+% Component: Header
+\newcommand{\header}[2]{
+    \title{#1}
+    \\[0.2em]\spaceskip0.5em\relax \horizontallist{#2}
+}
+
+% Component: Section Header
+\newcommand{\sectionheader}[1]{
+    \subsectionbreak
+    {\Large \headfont #1}
+    \\\subsectionbreak
+}

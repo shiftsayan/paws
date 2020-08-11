@@ -49,15 +49,15 @@
 
 % Component: Horizontal List
 \newcommand{\horizontallist}[1]{
-    \mbox{#1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}
+    \mbox{\spaceskip0em\relax #1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}
 }
-\newcommand{\recursehorizontallist}[1]{\ \textperiodcentered\ \mbox{#1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}} % The weird \mbox and \ prevents abrupt hyphenation
+\newcommand{\recursehorizontallist}[1]{\ \textperiodcentered\ \mbox{\spaceskip0em\relax #1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}} % The weird \mbox and \ prevents abrupt hyphenation
 
 \makeatother % End of recursive components
 
 % Component: Title
 \renewcommand{\title}[1]{
-    {\huge \titlefont #1}
+    {\huge \headfont #1}
 }
 
 % Component: Heading
@@ -81,4 +81,20 @@
 % Docstring: Render #3 if #1 and #2 exist.
 \newcommand{\ifexiststwo}[3]{%
     \ifexists{#1}{\ifexists{#2}{#3}}%
+}
+
+% Component: Mini Passport
+\newcommand{\minipassport}[3]{
+    \heading{#1}%
+    \ifexiststwo{#1}{#2#3}{\\}%
+    \textit{#2}\ifexiststwo{#2}{#3}{,\ }#3
+    \ifexiststwo{#1}{#2#3}{\\\subsectionbreak}%
+}
+
+% Component: Passport
+\newcommand{\passport}[6]{
+    \heading{#1}\ifexists{#2}{\ \textperiodcentered\ }#2\hfill{\footnotesize#3}
+    \ifexiststwo{#1}{#4#5}{\\\paragraphbreak}%
+    \textit{#4}\ifexiststwo{#4}{#5}{,\ }#5
+    \bulletedlist{#6}
 }
