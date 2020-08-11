@@ -8,6 +8,77 @@
 
 % Component: Spacing
 \newcommand{\subsectionbreak}{\vspace{0.2cm}}
-\newcommand{\passportbreak}{\vspace{0.05cm}}
+\newcommand{\paragraphbreak}{\vspace{0.05cm}}
+
+% Component: Left Minipage
+\newcommand{\lhs}[1]{%
+    \begin{minipage}[t]{0.25\textwidth}
+        \raggedright
+        #1
+    \end{minipage}
+}
+
+% Component: Right Minipage
+\newcommand{\rhs}[1]{%
+    \begin{minipage}[t]{0.7\textwidth}
+        \raggedright
+        #1
+    \end{minipage}
+}
+
+\makeatletter % Start of recursive components
 
 % Component: Simple List
+\newcommand{\simplelist}[1]{
+    \\\paragraphbreak#1\@ifnextchar\bgroup{\recursesimplelist}{\\\subsectionbreak}
+}
+\newcommand{\recursesimplelist}[1]{\\\paragraphbreak#1\@ifnextchar\bgroup{\recursesimplelist}{\\\subsectionbreak}}
+
+% Component: Bulleted List
+\usepackage{enumitem}
+\usepackage{mathabx}
+\newcommand{\bulletedlist}[1]{
+    \begin{itemize}[itemsep=0cm,parsep=0.05cm,topsep=0cm,leftmargin=-\itemindent,label=$\sqbullet$]
+    \item #1
+    \@ifnextchar\bgroup{\recursebulletedlist}{\end{itemize}\subsectionbreak}
+}
+\newcommand{\recursebulletedlist}[1]{
+    \item #1
+    \@ifnextchar\bgroup{\recursebulletedlist}{\end{itemize}\subsectionbreak}
+}
+
+% Component: Horizontal List
+\newcommand{\horizontallist}[1]{
+    \mbox{#1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}
+}
+\newcommand{\recursehorizontallist}[1]{\ \textperiodcentered\ \mbox{#1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}} % The weird \mbox and \ prevents abrupt hyphenation
+
+\makeatother % End of recursive components
+
+% Component: Title
+\renewcommand{\title}[1]{
+    {\huge \titlefont #1}
+}
+
+% Component: Heading
+\newcommand{\heading}[1]{%
+    \textbf{#1}%
+}
+
+% Component: Label
+\renewcommand{\label}[1]{%
+    \textit{#1:}%
+}
+
+% Component: If Exists
+% Docstring: Render #2 if #1 exists.
+\usepackage{ifthen}
+\newcommand{\ifexists}[2]{%
+    \ifthenelse{\equal{#1}{}}{}{#2}%
+}
+
+% Component: If Exists Two
+% Docstring: Render #3 if #1 and #2 exist.
+\newcommand{\ifexiststwo}[3]{%
+    \ifexists{#1}{\ifexists{#2}{#3}}%
+}

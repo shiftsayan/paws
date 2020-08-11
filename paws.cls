@@ -20,6 +20,7 @@
 \usepackage{fontawesome5}
 
 \setmainfont{Lato}
-\newcommand{\headingfont}{
+\newcommand{\titlefont}{
     \fontspec[Path=fonts/]{ProductSans-Bold.ttf}
 }
+
