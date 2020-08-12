@@ -30,7 +30,7 @@
 
 % Component: Simple List
 \newcommand{\simplelist}[1]{
-    \\\paragraphbreak#1\@ifnextchar\bgroup{\recursesimplelist}{\\\subsectionbreak}
+    \par\paragraphbreak#1\@ifnextchar\bgroup{\recursesimplelist}{\\\subsectionbreak}
 }
 \newcommand{\recursesimplelist}[1]{\\\paragraphbreak#1\@ifnextchar\bgroup{\recursesimplelist}{\\\subsectionbreak}}
 
@@ -38,7 +38,7 @@
 \usepackage{enumitem}
 \usepackage{mathabx}
 \newcommand{\bulletedlist}[1]{
-    \begin{itemize}[itemsep=0cm,parsep=0.05cm,topsep=0cm,leftmargin=-\itemindent,label=$\sqbullet$]
+    \begin{itemize}[itemsep=0cm,parsep=0.05cm,topsep=-0.05cm,leftmargin=-\itemindent,label=$\sqbullet$]
     \item #1
     \@ifnextchar\bgroup{\recursebulletedlist}{\end{itemize}\subsectionbreak}
 }
@@ -66,8 +66,8 @@
 }
 
 % Component: Label
-\renewcommand{\label}[1]{%
-    \textit{#1:}%
+\renewcommand{\label}[2]{%
+    \textit{#1:} #2\subsectionbreak\\
 }
 
 % Component: Return Label

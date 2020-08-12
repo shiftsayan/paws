@@ -44,3 +44,37 @@
     \\#3, #4
     \\\subsectionbreak
 }
+
+% Component: GPA/QPA
+\newcommand{\gpa}[1]{
+    \label{GPA}{#1}
+}
+
+\newcommand{\qpa}[1]{
+    \label{QPA}{#1}
+}
+
+% Component: Teaching
+\newcommand{\teaching}[1]{
+    \returnlabel{Teaching}{\bulletedlist{#1}}
+}
+
+% Component: Minors
+\newcommand{\minors}[1]{
+    \returnlabel{Additional Minors}{\simplelist{#1}}
+}
+
+% Component: Courses
+\newcommand{\courses}[1]{
+    \returnlabel{Relevant Coursework}{\bulletedlist{#1}}
+}
+
+% Component: Research
+\newcommand{\research}[1]{
+    \returnlabel{Research Areas}{\simplelist{#1}}
+}
+
+% Component: Skills
+\newcommand{\skills}[2]{
+    \returnlabel{#1}{\horizontallist{#2}}
+}
