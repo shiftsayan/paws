@@ -49,9 +49,9 @@
 
 % Component: Horizontal List
 \newcommand{\horizontallist}[1]{
-    \mbox{\spaceskip0em\relax #1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}
+    \mbox{#1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}
 }
-\newcommand{\recursehorizontallist}[1]{\ \textperiodcentered\ \mbox{\spaceskip0em\relax #1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}} % The weird \mbox and \ prevents abrupt hyphenation
+\newcommand{\recursehorizontallist}[1]{\ \textperiodcentered\ \mbox{#1}\@ifnextchar\bgroup{\recursehorizontallist}{\\\subsectionbreak}} % The weird \mbox and \ prevents abrupt hyphenation
 
 \makeatother % End of recursive components
 
@@ -68,6 +68,12 @@
 % Component: Label
 \renewcommand{\label}[1]{%
     \textit{#1:}%
+}
+
+% Component: Return Label
+\newcommand{\returnlabel}[2]{%
+    \textit{#1:}
+    \\#2
 }
 
 % Component: If Exists

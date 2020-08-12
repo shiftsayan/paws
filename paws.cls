@@ -27,12 +27,20 @@
 % Component: Header
 \newcommand{\header}[2]{
     \title{#1}
-    \\[0.2em]\spaceskip0.5em\relax \horizontallist{#2}
+    \\[0.2em]\horizontallist{#2}
 }
 
 % Component: Section Header
 \newcommand{\sectionheader}[1]{
     \subsectionbreak
     {\Large \headfont #1}
+    \\\subsectionbreak
+}
+
+% Component: Program
+\newcommand{\program}[4]{
+    \heading{#1}
+    \\\textit{#2}
+    \\#3, #4
     \\\subsectionbreak
 }
