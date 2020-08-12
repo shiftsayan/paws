@@ -78,3 +78,23 @@
 \newcommand{\skills}[2]{
     \returnlabel{#1}{\horizontallist{#2}}
 }
+
+% Component: Work Experience
+\newcommand{\work}[4]{
+    \passport{#1}{#2}{#3}{}{}{#4}
+}
+
+% Component: Project
+\newcommand{\project}[3]{
+    \passport{#1}{#2}{}{}{}{#3}
+}
+
+% Component: Publication
+\newcommand{\publication}[3]{
+    \minipassport{#1}{#2}{#3}
+}
+
+% Component: Honor
+\newcommand{\honor}[2]{
+    \minipassport{}{#1}{#2}
+}

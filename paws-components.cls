@@ -102,5 +102,5 @@
     \heading{#1}\ifexists{#2}{\ \textperiodcentered\ }#2\hfill{\footnotesize#3}
     \ifexiststwo{#1}{#4#5}{\\\paragraphbreak}%
     \textit{#4}\ifexiststwo{#4}{#5}{,\ }#5
-    \bulletedlist{#6}
+    \paragraphbreak\bulletedlist{#6}
 }
